@@ -19,6 +19,15 @@ public class CreateLevelByHandEditor : Editor
     public override void OnInspectorGUI()
     {
         CreateLevelByHand tool = (CreateLevelByHand)target;
+        if (GUILayout.Button("MergeSongElementToLevelData"))
+        {
+            tool.MergeSongElement();
+            if (EditorUtility.DisplayDialog("RebuildLevelData?", $"Thay doi Data cua bai{tool.songElement}", "Save", "No"))
+            {
+                EditorUtility.SetDirty(tool.LevelsDataSO);
+                AssetDatabase.SaveAssets();
+            }
+        }
         //if (GUILayout.Button(" JsonConvertLevelManager"))
         //{
         //    tool.ReadFromFile();
@@ -50,8 +59,8 @@ public class CreateLevelByHand : MonoBehaviour
         CREATE,
     }
     public StateTool state;
-    public int startTime = 0;
-    public int endTime = 0;
+    public float startTime = 0;
+    public float endTime = 0;
 
     public LevelsDataSO LevelsDataSO;
     public SongClipSO SongClipSO;
@@ -84,7 +93,7 @@ public class CreateLevelByHand : MonoBehaviour
     }
     private void Update()
     {
-        //  if (!stopwatch.IsRunning) return;
+
         int x = UnityEngine.Random.Range(0, 2);
 #if UNITY_EDITOR
 
@@ -102,10 +111,11 @@ public class CreateLevelByHand : MonoBehaviour
             stopwatch.Start();
             list = new List<Note>();
             audioSource.clip = SongClipSO.GetSfx(songElement);
-
+            audioSource.time = startTime;
             audioSource.Play();
 
         }
+        if (!stopwatch.IsRunning) return;
         //===========================================================
         if (isSpawnNoteLeft)
         {
@@ -146,36 +156,37 @@ public class CreateLevelByHand : MonoBehaviour
         {
             isSpawnNoteLeft = false;
 
-            list.Add(new Note(stopwatch.ElapsedMilliseconds, 1 + x, IcecreamType.Full, nodeLeftLength));
+            list.Add(new Note(stopwatch.ElapsedMilliseconds + startTime * 1000 - nodeLeftLength, 1 + x, IcecreamType.Full, nodeLeftLength));
         }
         if (Input.GetKeyUp(KeyCodeRight))
         {
             isSpawnNoteRight = false;
-            list.Add(new Note(stopwatch.ElapsedMilliseconds, 3 + x, IcecreamType.Full, nodeRightLength));
+            list.Add(new Note(stopwatch.ElapsedMilliseconds + startTime * 1000 - nodeRightLength, 3 + x, IcecreamType.Full, nodeRightLength));
         }
         if (Input.GetKeyUp(KeyCodeBothSongSong))
         {
             isSpawnBoth = false;
-            list.Add(new Note(stopwatch.ElapsedMilliseconds - nodeBothLength, 1 + x, IcecreamType.Full, nodeBothLength));
-            list.Add(new Note(stopwatch.ElapsedMilliseconds - nodeBothLength, 3 + x, IcecreamType.Full, nodeBothLength));
+            list.Add(new Note(stopwatch.ElapsedMilliseconds + startTime * 1000 - nodeBothLength, 1 + x, IcecreamType.Full, nodeBothLength));
+            list.Add(new Note(stopwatch.ElapsedMilliseconds + startTime * 1000 - nodeBothLength, 3 + x, IcecreamType.Full, nodeBothLength));
         }
         if (Input.GetKeyUp(KeyCodeBothTuongPhan))
         {
             isSpawnBoth = false;
-            list.Add(new Note(stopwatch.ElapsedMilliseconds - nodeBothLength, 2 - x, IcecreamType.Full, nodeBothLength));
-            list.Add(new Note(stopwatch.ElapsedMilliseconds - nodeBothLength, 3 + x, IcecreamType.Full, nodeBothLength));
+            list.Add(new Note(stopwatch.ElapsedMilliseconds + startTime * 1000 - nodeBothLength, 2 - x, IcecreamType.Full, nodeBothLength));
+            list.Add(new Note(stopwatch.ElapsedMilliseconds + startTime * 1000 - nodeBothLength, 3 + x, IcecreamType.Full, nodeBothLength));
         }
         //==============================================================
-        if (Input.GetKeyDown(KeyCode.E))
+        if (Input.GetKeyDown(KeyCode.E) || stopwatch.ElapsedMilliseconds > (endTime - startTime) * 1000)
         {
+            endTime = (float)stopwatch.ElapsedMilliseconds / (float)1000 + startTime;
             stopwatch.Stop();
             audioSource.Stop();
             List<Note> P_list = FixData(list);
-            //Debug.Log($"End And SaveTOLevelDataArray[{songElement}]");
-            //songDataSplit.songData.Add(new SongElement(startTime, endTime, P_list));
-            LevelData P_levelData = new LevelData(P_list);
-            LevelsDataSO.LevelDataArray[songElement] = P_levelData;
-            EditorUtility.SetDirty(LevelsDataSO);
+            Debug.Log($"End And SaveSong Array[{songElement}]");
+            songDataSplit.SongElements.Add(new SongElement(startTime, endTime, P_list));
+            //    LevelData P_levelData = new LevelData(P_list);
+            //  LevelsDataSO.LevelDataArray[songElement] = P_levelData;
+            EditorUtility.SetDirty(songDataSplit);
             AssetDatabase.SaveAssets();
         }
 #endif
@@ -251,7 +262,16 @@ public class CreateLevelByHand : MonoBehaviour
         LevelData levelData = new LevelData(list);
         LevelsDataSO.LevelDataArray[songElement] = levelData;
     }
-
+    public void MergeSongElement()
+    {
+        List<Note> list = new List<Note>();
+        for (int i = 0; i < songDataSplit.SongElements.Count; i++)
+        {
+            list.AddRange(songDataSplit.SongElements[i].lstNote);
+        }
+        LevelData P_levelData = new LevelData(list);
+        LevelsDataSO.LevelDataArray[songElement] = P_levelData;
+    }
     public int Compare(Note a, Note b)
     {
         return a.time.CompareTo(b.time);

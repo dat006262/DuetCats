@@ -5,7 +5,7 @@ using UnityEngine;
 public class SongDataSplit : ScriptableObject
 {
 
-    public List<SongElement> songData = new List<SongElement>();
+    public List<SongElement> SongElements = new List<SongElement>();
 
 
 }
@@ -14,12 +14,12 @@ public class SongElement
 {
     public float from;
     public float to;
-    public List<Note> data = new List<Note>();
+    public List<Note> lstNote = new List<Note>();
 
     public SongElement(float from, float to, List<Note> data)
     {
         this.from = from;
         this.to = to;
-        this.data = data;
+        this.lstNote = data;
     }
 }

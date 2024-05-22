@@ -9,262 +9,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4f0096ad116de02459c10ea7705d8444, type: 3}
-  m_Name: LevelsDataSO
+  m_Script: {fileID: 11500000, guid: 7916fab3d5124b44e8654bfe524382f5, type: 3}
+  m_Name: DanceMonkey
   m_EditorClassIdentifier: 
-  LevelDataArray:
-  - SongName: BadGuy
-    lstNode:
-    - time: 4280
-      length: 0
-      types: 0
-      line: 2
-    - time: 4540
-      length: 0
-      types: 0
-      line: 1
-    - time: 5050
-      length: 0
-      types: 0
-      line: 2
-    - time: 5518
-      length: 0
-      types: 0
-      line: 2
-    - time: 5972
-      length: 0
-      types: 0
-      line: 2
-    - time: 6651
-      length: 0
-      types: 0
-      line: 1
-    - time: 6701
-      length: 0
-      types: 1
-      line: 1
-    - time: 6751
-      length: 0
-      types: 1
-      line: 1
-    - time: 7308
-      length: 0
-      types: 0
-      line: 1
-    - time: 7358
-      length: 0
-      types: 1
-      line: 1
-    - time: 7408
-      length: 0
-      types: 1
-      line: 1
-    - time: 7458
-      length: 0
-      types: 1
-      line: 1
-    - time: 7508
-      length: 0
-      types: 1
-      line: 1
-    - time: 7558
-      length: 0
-      types: 1
-      line: 1
-    - time: 7593
-      length: 0
-      types: 0
-      line: 3
-    - time: 8032
-      length: 0
-      types: 0
-      line: 3
-    - time: 8614
-      length: 0
-      types: 0
-      line: 4
-    - time: 9041
-      length: 0
-      types: 0
-      line: 4
-    - time: 9469
-      length: 0
-      types: 0
-      line: 4
-    - time: 9907
-      length: 0
-      types: 0
-      line: 4
-    - time: 10763
-      length: 0
-      types: 0
-      line: 4
-    - time: 10813
-      length: 0
-      types: 1
-      line: 4
-    - time: 10863
-      length: 0
-      types: 1
-      line: 4
-    - time: 10913
-      length: 0
-      types: 1
-      line: 4
-    - time: 10963
-      length: 0
-      types: 1
-      line: 4
-    - time: 11013
-      length: 0
-      types: 1
-      line: 4
-    - time: 11063
-      length: 0
-      types: 1
-      line: 4
-    - time: 11085
-      length: 0
-      types: 0
-      line: 2
-    - time: 11490
-      length: 0
-      types: 0
-      line: 2
-    - time: 12185
-      length: 0
-      types: 0
-      line: 1
-    - time: 12609
-      length: 0
-      types: 0
-      line: 2
-    - time: 13040
-      length: 0
-      types: 0
-      line: 2
-    - time: 13464
-      length: 0
-      types: 0
-      line: 2
-    - time: 14260
-      length: 0
-      types: 0
-      line: 2
-    - time: 14310
-      length: 0
-      types: 1
-      line: 2
-    - time: 14360
-      length: 0
-      types: 1
-      line: 2
-    - time: 14410
-      length: 0
-      types: 1
-      line: 2
-    - time: 14653
-      length: 0
-      types: 0
-      line: 1
-    - time: 14656
-      length: 0
-      types: 0
-      line: 3
-    - time: 15034
-      length: 0
-      types: 0
-      line: 3
-    - time: 15050
-      length: 0
-      types: 0
-      line: 1
-    - time: 15709
-      length: 0
-      types: 0
-      line: 1
-    - time: 15709
-      length: 0
-      types: 0
-      line: 3
-    - time: 16173
-      length: 0
-      types: 0
-      line: 1
-    - time: 16176
-      length: 0
-      types: 0
-      line: 4
-    - time: 17285
-      length: 0
-      types: 0
-      line: 2
-    - time: 17321
-      length: 0
-      types: 0
-      line: 4
-    - time: 17335
-      length: 0
-      types: 1
-      line: 2
-    - time: 17371
-      length: 0
-      types: 1
-      line: 4
-    - time: 17385
-      length: 0
-      types: 1
-      line: 2
-    - time: 17421
-      length: 0
-      types: 1
-      line: 4
-    - time: 17435
-      length: 0
-      types: 1
-      line: 2
-    - time: 17471
-      length: 0
-      types: 1
-      line: 4
-    - time: 17485
-      length: 0
-      types: 1
-      line: 2
-    - time: 17521
-      length: 0
-      types: 1
-      line: 4
-    - time: 17535
-      length: 0
-      types: 1
-      line: 2
-    - time: 17571
-      length: 0
-      types: 1
-      line: 4
-    - time: 17585
-      length: 0
-      types: 1
-      line: 2
-    - time: 17621
-      length: 0
-      types: 1
-      line: 4
-    - time: 17635
-      length: 0
-      types: 1
-      line: 2
-    - time: 17671
-      length: 0
-      types: 1
-      line: 4
-    - time: 17721
-      length: 0
-      types: 1
-      line: 4
-  - SongName: 
-    lstNode:
+  SongElements:
+  - from: 0
+    to: 14.307
+    lstNote:
     - time: 5444
       length: 0
       types: 0
@@ -425,6 +176,9 @@ MonoBehaviour:
       length: 0
       types: 1
       line: 2
+  - from: 14.307
+    to: 23.963
+    lstNote:
     - time: 14966
       length: 0
       types: 0
@@ -581,6 +335,9 @@ MonoBehaviour:
       length: 0
       types: 1
       line: 2
+  - from: 23.963
+    to: 33.735
+    lstNote:
     - time: 24571
       length: 0
       types: 0
@@ -765,6 +522,9 @@ MonoBehaviour:
       length: 0
       types: 1
       line: 2
+  - from: 33.735
+    to: 43.465
+    lstNote:
     - time: 34176
       length: 0
       types: 0
@@ -965,6 +725,9 @@ MonoBehaviour:
       length: 0
       types: 1
       line: 2
+  - from: 43.465
+    to: 53.523
+    lstNote:
     - time: 44069
       length: 0
       types: 0
@@ -1105,6 +868,9 @@ MonoBehaviour:
       length: 0
       types: 1
       line: 1
+  - from: 53.523
+    to: 63.447
+    lstNote:
     - time: 53983
       length: 0
       types: 0
@@ -1269,6 +1035,9 @@ MonoBehaviour:
       length: 0
       types: 1
       line: 1
+  - from: 63.447
+    to: 73.017
+    lstNote:
     - time: 63768
       length: 0
       types: 0
@@ -1469,6 +1238,9 @@ MonoBehaviour:
       length: 0
       types: 1
       line: 1
+  - from: 73.017
+    to: 86.187996
+    lstNote:
     - time: 73461
       length: 0
       types: 0
@@ -1817,21 +1589,3 @@ MonoBehaviour:
       length: 0
       types: 1
       line: 3
-  - SongName: 
-    lstNode: []
-  - SongName: 
-    lstNode: []
-  - SongName: 
-    lstNode: []
-  - SongName: 
-    lstNode: []
-  - SongName: 
-    lstNode: []
-  - SongName: 
-    lstNode: []
-  - SongName: 
-    lstNode: []
-  - SongName: 
-    lstNode: []
-  - SongName: 
-    lstNode: []
