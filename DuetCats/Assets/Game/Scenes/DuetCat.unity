@@ -2247,13 +2247,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   preInstantiate: 0
+  LevelsDataSO: {fileID: 11400000, guid: 398dcac8c315d9d4fbeaf55b3878419a, type: 2}
+  SongClipSO: {fileID: 11400000, guid: c4c5fe97f6485134db684e1338133a7e, type: 2}
+  delayTime: 1.5
+  songElement: 1
   projectileManager: {fileID: 1069248012}
   endGame: {fileID: 1214910709}
   btnRestart: {fileID: 1865921023}
   audioSource: {fileID: 1351133717}
-  LevelsDataSO: {fileID: 11400000, guid: 398dcac8c315d9d4fbeaf55b3878419a, type: 2}
-  SongClipSO: {fileID: 11400000, guid: c4c5fe97f6485134db684e1338133a7e, type: 2}
-  songElement: 0
   levelData:
     SongName: 
     lstNode: []

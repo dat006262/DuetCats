@@ -14,3 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _lstSong:
   - {fileID: 8300000, guid: 5d9e0c6589e3d0d498043ceef44e8318, type: 3}
+  - {fileID: 8300000, guid: 234fadd69fff9434ba2e6cb24d9ab0ac, type: 3}

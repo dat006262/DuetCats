@@ -1,0 +1,237 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7916fab3d5124b44e8654bfe524382f5, type: 3}
+  m_Name: SongDataSplit
+  m_EditorClassIdentifier: 
+  songData:
+  - from: 0
+    to: 1
+    data:
+    - time: 845
+      length: 0
+      types: 0
+      line: 2
+    - time: 845
+      length: 0
+      types: 0
+      line: 4
+    - time: 1144
+      length: 0
+      types: 0
+      line: 2
+    - time: 1144
+      length: 0
+      types: 0
+      line: 4
+    - time: 1348
+      length: 0
+      types: 0
+      line: 1
+    - time: 1349
+      length: 0
+      types: 0
+      line: 3
+    - time: 1546
+      length: 0
+      types: 0
+      line: 1
+    - time: 1546
+      length: 0
+      types: 0
+      line: 3
+    - time: 1741
+      length: 0
+      types: 0
+      line: 1
+    - time: 1741
+      length: 0
+      types: 0
+      line: 3
+  - from: 0
+    to: 20
+    data:
+    - time: 2462
+      length: 0
+      types: 0
+      line: 2
+    - time: 2462
+      length: 0
+      types: 0
+      line: 4
+    - time: 2512
+      length: 0
+      types: 1
+      line: 2
+    - time: 2512
+      length: 0
+      types: 1
+      line: 4
+    - time: 2562
+      length: 0
+      types: 1
+      line: 2
+    - time: 2562
+      length: 0
+      types: 1
+      line: 4
+    - time: 2612
+      length: 0
+      types: 1
+      line: 2
+    - time: 2612
+      length: 0
+      types: 1
+      line: 4
+    - time: 2662
+      length: 0
+      types: 1
+      line: 2
+    - time: 2662
+      length: 0
+      types: 1
+      line: 4
+    - time: 2712
+      length: 0
+      types: 1
+      line: 4
+    - time: 2712
+      length: 0
+      types: 1
+      line: 2
+    - time: 2762
+      length: 0
+      types: 1
+      line: 2
+    - time: 2762
+      length: 0
+      types: 1
+      line: 4
+    - time: 2812
+      length: 0
+      types: 1
+      line: 2
+    - time: 2812
+      length: 0
+      types: 1
+      line: 4
+    - time: 2862
+      length: 0
+      types: 1
+      line: 4
+    - time: 2862
+      length: 0
+      types: 1
+      line: 2
+    - time: 2912
+      length: 0
+      types: 1
+      line: 4
+    - time: 2912
+      length: 0
+      types: 1
+      line: 2
+    - time: 2962
+      length: 0
+      types: 1
+      line: 2
+    - time: 2962
+      length: 0
+      types: 1
+      line: 4
+    - time: 3012
+      length: 0
+      types: 1
+      line: 2
+    - time: 3012
+      length: 0
+      types: 1
+      line: 4
+    - time: 3062
+      length: 0
+      types: 1
+      line: 2
+    - time: 3062
+      length: 0
+      types: 1
+      line: 4
+    - time: 3112
+      length: 0
+      types: 1
+      line: 2
+    - time: 3112
+      length: 0
+      types: 1
+      line: 4
+    - time: 3162
+      length: 0
+      types: 1
+      line: 2
+    - time: 3162
+      length: 0
+      types: 1
+      line: 4
+    - time: 3212
+      length: 0
+      types: 1
+      line: 2
+    - time: 3212
+      length: 0
+      types: 1
+      line: 4
+    - time: 5295
+      length: 0
+      types: 0
+      line: 1
+    - time: 5345
+      length: 0
+      types: 1
+      line: 1
+    - time: 5395
+      length: 0
+      types: 1
+      line: 1
+    - time: 5445
+      length: 0
+      types: 1
+      line: 1
+    - time: 5495
+      length: 0
+      types: 1
+      line: 1
+    - time: 5545
+      length: 0
+      types: 1
+      line: 1
+    - time: 5595
+      length: 0
+      types: 1
+      line: 1
+    - time: 5645
+      length: 0
+      types: 1
+      line: 1
+    - time: 5695
+      length: 0
+      types: 1
+      line: 1
+    - time: 5745
+      length: 0
+      types: 1
+      line: 1
+    - time: 5795
+      length: 0
+      types: 1
+      line: 1
+    - time: 5845
+      length: 0
+      types: 1
+      line: 1

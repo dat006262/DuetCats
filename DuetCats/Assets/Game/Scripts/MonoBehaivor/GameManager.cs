@@ -22,6 +22,7 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
 {
     [ReadOnly] public LevelsDataSO LevelsDataSO;
     [ReadOnly] public SongClipSO SongClipSO;
+    public float delayTime = 2f;
     public int songElement;
     [Foldout("Reffernet-DontTouch", true)]
     private bool startGame = false;
@@ -122,7 +123,7 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
     }
     IEnumerator PlaySound()
     {
-        yield return new WaitForSeconds(1.8f);
+        yield return new WaitForSeconds(delayTime);
         audioSource.clip = SongClipSO.GetSfx(songElement);
         audioSource.Play();
     }
