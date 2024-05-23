@@ -355,7 +355,7 @@ public class SoundManager : SingletonMonoBehaviour<SoundManager>
     {
         if (value)
         {
-            Handheld.Vibrate();
+            //  Handheld.Vibrate();
         }
         else
         {

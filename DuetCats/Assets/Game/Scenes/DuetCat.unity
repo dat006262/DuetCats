@@ -2250,7 +2250,7 @@ MonoBehaviour:
   LevelsDataSO: {fileID: 11400000, guid: 398dcac8c315d9d4fbeaf55b3878419a, type: 2}
   SongClipSO: {fileID: 11400000, guid: c4c5fe97f6485134db684e1338133a7e, type: 2}
   delayTime: 1.5
-  songElement: 1
+  songElement: 0
   projectileManager: {fileID: 1069248012}
   endGame: {fileID: 1214910709}
   btnRestart: {fileID: 1865921023}
