@@ -15,217 +15,161 @@ MonoBehaviour:
   LevelDataArray:
   - SongName: 
     lstNode:
-    - time: 557
+    - time: 3871.5457
       length: 0
       types: 0
       line: 1
-    - time: 559
-      length: 0
-      types: 0
-      line: 4
-    - time: 607
-      length: 0
-      types: 1
-      line: 1
-    - time: 609
-      length: 0
-      types: 1
-      line: 4
-    - time: 657
-      length: 0
-      types: 1
-      line: 1
-    - time: 659
-      length: 0
-      types: 1
-      line: 4
-    - time: 707
-      length: 0
-      types: 1
-      line: 1
-    - time: 709
-      length: 0
-      types: 1
-      line: 4
-    - time: 757
-      length: 0
-      types: 1
-      line: 1
-    - time: 759
-      length: 0
-      types: 1
-      line: 4
-    - time: 807
-      length: 0
-      types: 1
-      line: 1
-    - time: 809
-      length: 0
-      types: 1
-      line: 4
-    - time: 857
-      length: 0
-      types: 1
-      line: 1
-    - time: 859
-      length: 0
-      types: 1
-      line: 4
-    - time: 907
-      length: 0
-      types: 1
-      line: 1
-    - time: 909
-      length: 0
-      types: 1
-      line: 4
-    - time: 957
-      length: 0
-      types: 1
-      line: 1
-    - time: 959
-      length: 0
-      types: 1
-      line: 4
-    - time: 1007
-      length: 0
-      types: 1
-      line: 1
-    - time: 1009
-      length: 0
-      types: 1
-      line: 4
-    - time: 3317
+    - time: 4251.5454
       length: 0
       types: 0
       line: 1
-    - time: 3367
+    - time: 4952.5454
       length: 0
-      types: 1
+      types: 0
       line: 1
-    - time: 3417
+    - time: 5398.5454
       length: 0
-      types: 1
+      types: 0
+      line: 2
+    - time: 5842.5454
+      length: 0
+      types: 0
+      line: 2
+    - time: 6250.5454
+      length: 0
+      types: 0
       line: 1
-    - time: 3467
+    - time: 6727.5454
+      length: 0
+      types: 0
+      line: 2
+    - time: 6995.5454
+      length: 0
+      types: 0
+      line: 2
+    - time: 7448.3696
+      length: 0
+      types: 0
+      line: 3
+    - time: 7842.3696
+      length: 0
+      types: 0
+      line: 3
+    - time: 8482.37
+      length: 0
+      types: 0
+      line: 3
+    - time: 8928.37
+      length: 0
+      types: 0
+      line: 3
+    - time: 9389.37
+      length: 0
+      types: 0
+      line: 3
+    - time: 9774.37
+      length: 0
+      types: 0
+      line: 3
+    - time: 10151.37
+      length: 0
+      types: 0
+      line: 3
+    - time: 10407.37
+      length: 0
+      types: 0
+      line: 3
+    - time: 10457.37
       length: 0
       types: 1
+      line: 3
+    - time: 10507.37
+      length: 0
+      types: 1
+      line: 3
+    - time: 10557.37
+      length: 0
+      types: 1
+      line: 3
+    - time: 11013.38
+      length: 0
+      types: 0
       line: 1
-    - time: 3517
+    - time: 11424.38
       length: 0
-      types: 1
+      types: 0
       line: 1
-    - time: 3567
+    - time: 12034.38
       length: 0
-      types: 1
+      types: 0
       line: 1
-    - time: 4976
+    - time: 12483.38
+      length: 0
+      types: 0
+      line: 1
+    - time: 12915.38
+      length: 0
+      types: 0
+      line: 1
+    - time: 13389.38
+      length: 0
+      types: 0
+      line: 1
+    - time: 13744.38
       length: 0
       types: 0
       line: 2
-    - time: 4977
-      length: 0
-      types: 0
-      line: 3
-    - time: 5026
-      length: 0
-      types: 1
-      line: 2
-    - time: 5027
-      length: 0
-      types: 1
-      line: 3
-    - time: 5076
-      length: 0
-      types: 1
-      line: 2
-    - time: 5077
-      length: 0
-      types: 1
-      line: 3
-    - time: 5126
-      length: 0
-      types: 1
-      line: 2
-    - time: 5127
-      length: 0
-      types: 1
-      line: 3
-    - time: 5176
-      length: 0
-      types: 1
-      line: 2
-    - time: 5177
-      length: 0
-      types: 1
-      line: 3
-    - time: 8738
-      length: 0
-      types: 0
-      line: 3
-    - time: 8738
+    - time: 13988.38
       length: 0
       types: 0
       line: 2
-    - time: 8788
-      length: 0
-      types: 1
-      line: 3
-    - time: 8788
-      length: 0
-      types: 1
-      line: 2
-    - time: 8838
-      length: 0
-      types: 1
-      line: 3
-    - time: 8838
-      length: 0
-      types: 1
-      line: 2
-    - time: 8888
-      length: 0
-      types: 1
-      line: 2
-    - time: 8888
-      length: 0
-      types: 1
-      line: 3
-    - time: 8938
-      length: 0
-      types: 1
-      line: 2
-    - time: 8938
-      length: 0
-      types: 1
-      line: 3
-    - time: 10681.105
+    - time: 14670.074
       length: 0
       types: 0
       line: 3
-    - time: 10731.105
-      length: 0
-      types: 1
-      line: 3
-    - time: 10781.105
-      length: 0
-      types: 1
-      line: 3
-    - time: 10831.105
-      length: 0
-      types: 1
-      line: 3
-    - time: 12016
+    - time: 14685.074
       length: 0
       types: 0
       line: 2
-    - time: 12567
+    - time: 14951.074
+      length: 0
+      types: 0
+      line: 3
+    - time: 14953.074
       length: 0
       types: 0
       line: 2
-    - time: 12617
+    - time: 15558.074
       length: 0
-      types: 1
+      types: 0
+      line: 3
+    - time: 15569.074
+      length: 0
+      types: 0
+      line: 2
+    - time: 16035.074
+      length: 0
+      types: 0
+      line: 3
+    - time: 16043.073
+      length: 0
+      types: 0
+      line: 2
+    - time: 16430.074
+      length: 0
+      types: 0
+      line: 4
+    - time: 16433.074
+      length: 0
+      types: 0
+      line: 2
+    - time: 16697.074
+      length: 0
+      types: 0
+      line: 4
+    - time: 16701.074
+      length: 0
+      types: 0
       line: 2
   - SongName: 
     lstNode:

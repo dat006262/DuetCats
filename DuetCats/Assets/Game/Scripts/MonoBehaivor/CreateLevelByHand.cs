@@ -72,6 +72,7 @@ public class CreateLevelByHandEditor : Editor
 #endif
 public class CreateLevelByHand : SingletonMonoBehaviour<CreateLevelByHand>
 {
+    public LineStartAt LineStartAt;
     public TextMeshProUGUI noteDataTxt;
     public GameObject timeLine;
     LevelData levelData;
@@ -82,14 +83,14 @@ public class CreateLevelByHand : SingletonMonoBehaviour<CreateLevelByHand>
         CREATE,
     }
     public StateTool state;
-    private float clipLength = 1;
+    public float clipLength = 1;
     private float timeSong => stopwatch.IsRunning ? _startTime + (float)stopwatch.ElapsedMilliseconds / 1000f : _startTime;
     public Slider sliderSong;
     private float _startTime;
     public float startTime
     {
         get { return _startTime; }
-        set { _startTime = value; startTimeTxt.text = $"StartTime: {_startTime}"; }
+        set { _startTime = value; startTimeTxt.text = $"StartTime: {_startTime}"; LineStartAt.transform.position = new Vector3(_startTime, 0, 0); }
     }
     public TextMeshProUGUI startTimeTxt;
     public float endTime = 0;
@@ -101,7 +102,7 @@ public class CreateLevelByHand : SingletonMonoBehaviour<CreateLevelByHand>
     public SongDataSplit songDataSplit;
     public List<SongElement> songElements;
     public int songElement;
-    Stopwatch stopwatch;
+    public Stopwatch stopwatch;
 
     public KeyCode KeyCodeLeft = KeyCode.N;
     public KeyCode KeyCodeRight = KeyCode.M;
@@ -110,18 +111,20 @@ public class CreateLevelByHand : SingletonMonoBehaviour<CreateLevelByHand>
     //===================================================
 
     public AudioSource audioSource;
-    bool isSpawnNoteLeft = false;
-    bool isSpawnNoteRight = false;
-    bool isSpawnBoth;
+    bool isSpawnLine1 = false;
+    bool isSpawmLine2 = false;
+    bool isSpawnLine3;
+    bool isSpawnLine4;
 
     public static MidiFile midiFile;
 
     List<Note> list = new List<Note>();
     List<NoteMusic> listNoteMusic = new List<NoteMusic>();
     public List<NoteMusic> listNoteMusicFinal = new List<NoteMusic>();
-    int nodeLeftLength;
-    int nodeRightLength;
-    int nodeBothLength;
+    int nodeLine1Length;
+    int nodeLine2Length;
+    int nodeLine3Length;
+    int nodeLine4Length;
     private void Start()
     {
         stopwatch = new Stopwatch();
@@ -135,11 +138,11 @@ public class CreateLevelByHand : SingletonMonoBehaviour<CreateLevelByHand>
             CammeraMove.Instance.camlookat.position = new Vector3(timeSong - 16, 2, 0);
         }
 
-        int x = UnityEngine.Random.Range(0, 2);
+
 
 
         //====================================================================
-        if (Input.GetKeyDown(KeyCode.S) && state == StateTool.CREATE && timeSong < clipLength)
+        if (Input.GetKeyDown(KeySetting.Instance.keyDictionary["Start"]) && state == StateTool.CREATE && timeSong < clipLength)
         {
             pressStart();
 
@@ -160,88 +163,92 @@ public class CreateLevelByHand : SingletonMonoBehaviour<CreateLevelByHand>
             }
         }
 
-        if (Input.GetKeyDown(KeyCode.P) && timeSong < clipLength)
-        {
-            Presssstop();
+        //if (Input.GetKeyDown(KeyCode.P) && timeSong < clipLength)
+        //{
+        //    Presssstop();
 
-        }
-        if (Input.GetKeyDown(KeyCode.E) && stopwatch.ElapsedMilliseconds < (endTime - startTime) * 1000 && timeSong < clipLength)
+        //}
+        if (Input.GetKeyDown(KeySetting.Instance.keyDictionary["End"]) || stopwatch.ElapsedMilliseconds > (endTime - startTime) * 1000 || timeSong > clipLength)
         {
             PressEnd();
         }
         if (!stopwatch.IsRunning) return;
         //===========================================================
-        if (isSpawnNoteLeft)
+        if (isSpawnLine1)
         {
-            nodeLeftLength += (int)(Time.deltaTime * 1000);
+            nodeLine1Length += (int)(Time.deltaTime * 1000);
         }
-        if (isSpawnNoteRight)
+        if (isSpawmLine2)
         {
-            nodeRightLength += (int)(Time.deltaTime * 1000);
+            nodeLine2Length += (int)(Time.deltaTime * 1000);
         }
-        if (isSpawnBoth)
+        if (isSpawnLine3)
         {
-            nodeBothLength += (int)(Time.deltaTime * 1000);
+            nodeLine3Length += (int)(Time.deltaTime * 1000);
+        }
+        if (isSpawnLine4)
+        {
+            nodeLine4Length += (int)(Time.deltaTime * 1000);
         }
         //====================================================
-        if (Input.GetKeyDown(KeySetting.Instance.keyDictionary["Left"]))
+
+
+        #region Spawn Line
+        if (Input.GetKeyDown(KeySetting.Instance.keyDictionary["Line1"]))
         {
-            isSpawnNoteLeft = true;
-            nodeLeftLength = 0;
+            isSpawnLine1 = true;
+            nodeLine1Length = 0;
         }
-        if (Input.GetKeyDown(KeySetting.Instance.keyDictionary["Right"]))
+        if (Input.GetKeyDown(KeySetting.Instance.keyDictionary["Line2"]))
         {
-            isSpawnNoteRight = true;
-            nodeRightLength = 0;
+            isSpawmLine2 = true;
+            nodeLine2Length = 0;
         }
-        if (Input.GetKeyDown(KeySetting.Instance.keyDictionary["BothSongSong"]))
+        if (Input.GetKeyDown(KeySetting.Instance.keyDictionary["Line3"]))
         {
-            isSpawnBoth = true;
-            nodeBothLength = 0;
+            isSpawnLine3 = true;
+            nodeLine3Length = 0;
         }
-        if (Input.GetKeyDown(KeySetting.Instance.keyDictionary["BothSole"]))
+        if (Input.GetKeyDown(KeySetting.Instance.keyDictionary["Line4"]))
         {
-            isSpawnBoth = true;
-            nodeBothLength = 0;
+            isSpawnLine4 = true;
+            nodeLine4Length = 0;
         }
         //===============================================
 
-        if (Input.GetKeyUp(KeySetting.Instance.keyDictionary["Left"]))
+        if (Input.GetKeyUp(KeySetting.Instance.keyDictionary["Line1"]))
         {
-            isSpawnNoteLeft = false;
+            isSpawnLine1 = false;
 
-            list.Add(new Note(stopwatch.ElapsedMilliseconds + startTime * 1000 - nodeLeftLength, 1 + x, IcecreamType.Full, nodeLeftLength));
-            NoteMusic noteMusic = SpawnNote.Instance.SpawnANote(1 + x, nodeLeftLength, stopwatch.ElapsedMilliseconds + startTime * 1000 - nodeLeftLength);
+            list.Add(new Note(stopwatch.ElapsedMilliseconds + startTime * 1000 - nodeLine1Length, 1, IcecreamType.Full, nodeLine1Length));
+            NoteMusic noteMusic = SpawnNote.Instance.SpawnANote(1, nodeLine1Length, stopwatch.ElapsedMilliseconds + startTime * 1000 - nodeLine1Length);
             listNoteMusic.Add(noteMusic);
 
         }
-        if (Input.GetKeyUp(KeySetting.Instance.keyDictionary["Right"]))
+        if (Input.GetKeyUp(KeySetting.Instance.keyDictionary["Line2"]))
         {
-            isSpawnNoteRight = false;
-            list.Add(new Note(stopwatch.ElapsedMilliseconds + startTime * 1000 - nodeRightLength, 3 + x, IcecreamType.Full, nodeRightLength));
-            NoteMusic noteMusic = SpawnNote.Instance.SpawnANote(3 + x, nodeRightLength, stopwatch.ElapsedMilliseconds + startTime * 1000 - nodeRightLength);
+            isSpawmLine2 = false;
+            list.Add(new Note(stopwatch.ElapsedMilliseconds + startTime * 1000 - nodeLine2Length, 2, IcecreamType.Full, nodeLine2Length));
+            NoteMusic noteMusic = SpawnNote.Instance.SpawnANote(2, nodeLine2Length, stopwatch.ElapsedMilliseconds + startTime * 1000 - nodeLine2Length);
             listNoteMusic.Add(noteMusic);
         }
-        if (Input.GetKeyUp(KeySetting.Instance.keyDictionary["BothSongSong"]))
+        if (Input.GetKeyUp(KeySetting.Instance.keyDictionary["Line3"]))
         {
-            isSpawnBoth = false;
-            list.Add(new Note(stopwatch.ElapsedMilliseconds + startTime * 1000 - nodeBothLength, 1 + x, IcecreamType.Full, nodeBothLength));
-            list.Add(new Note(stopwatch.ElapsedMilliseconds + startTime * 1000 - nodeBothLength, 3 + x, IcecreamType.Full, nodeBothLength));
-            NoteMusic noteMusic1 = SpawnNote.Instance.SpawnANote(1 + x, nodeBothLength, stopwatch.ElapsedMilliseconds + startTime * 1000 - nodeBothLength);
-            NoteMusic noteMusic2 = SpawnNote.Instance.SpawnANote(3 + x, nodeBothLength, stopwatch.ElapsedMilliseconds + startTime * 1000 - nodeBothLength);
+            isSpawnLine3 = false;
+            list.Add(new Note(stopwatch.ElapsedMilliseconds + startTime * 1000 - nodeLine3Length, 3, IcecreamType.Full, nodeLine3Length));
+
+            NoteMusic noteMusic1 = SpawnNote.Instance.SpawnANote(3, nodeLine3Length, stopwatch.ElapsedMilliseconds + startTime * 1000 - nodeLine3Length);
+
             listNoteMusic.Add(noteMusic1);
-            listNoteMusic.Add(noteMusic2);
         }
-        if (Input.GetKeyUp(KeySetting.Instance.keyDictionary["BothSole"]))
+        if (Input.GetKeyUp(KeySetting.Instance.keyDictionary["Line4"]))
         {
-            isSpawnBoth = false;
-            list.Add(new Note(stopwatch.ElapsedMilliseconds + startTime * 1000 - nodeBothLength, 2 - x, IcecreamType.Full, nodeBothLength));
-            list.Add(new Note(stopwatch.ElapsedMilliseconds + startTime * 1000 - nodeBothLength, 3 + x, IcecreamType.Full, nodeBothLength));
-            NoteMusic noteMusic1 = SpawnNote.Instance.SpawnANote(2 - x, nodeBothLength, stopwatch.ElapsedMilliseconds + startTime * 1000 - nodeBothLength);
-            NoteMusic noteMusic2 = SpawnNote.Instance.SpawnANote(3 + x, nodeBothLength, stopwatch.ElapsedMilliseconds + startTime * 1000 - nodeBothLength);
+            isSpawnLine4 = false;
+            list.Add(new Note(stopwatch.ElapsedMilliseconds + startTime * 1000 - nodeLine4Length, 4, IcecreamType.Full, nodeLine4Length));
+            NoteMusic noteMusic1 = SpawnNote.Instance.SpawnANote(4, nodeLine4Length, stopwatch.ElapsedMilliseconds + startTime * 1000 - nodeLine4Length);
             listNoteMusic.Add(noteMusic1);
-            listNoteMusic.Add(noteMusic2);
         }
+        #endregion
         //==============================================================
         if (timeSong >= clipLength)
         {
@@ -339,6 +346,19 @@ public class CreateLevelByHand : SingletonMonoBehaviour<CreateLevelByHand>
         {
             Destroy(note.transform.parent.gameObject);
         }
+        List<NoteMusic> listDelete = new List<NoteMusic>();
+        for (int i = listNoteMusicFinal.Count - 1; i >= 0; i--)
+        {
+            if (listNoteMusicFinal[i].time > startTime)
+            {
+                listDelete.Add(listNoteMusicFinal[i]);
+            }
+        }
+        foreach (var x in listDelete)
+        {
+            listNoteMusicFinal.Remove(x);
+            Destroy(x.transform.parent.gameObject);
+        }
         list = new List<Note>();
         listNoteMusic = new List<NoteMusic>();
 
@@ -363,7 +383,10 @@ public class CreateLevelByHand : SingletonMonoBehaviour<CreateLevelByHand>
 
     void PressEnd()
     {
-
+        if (!stopwatch.IsRunning)
+        {
+            return;
+        }
         endTime = (float)stopwatch.ElapsedMilliseconds / (float)1000 + startTime;
         stopwatch.Stop();
         audioSource.Stop();
@@ -395,7 +418,7 @@ public class CreateLevelByHand : SingletonMonoBehaviour<CreateLevelByHand>
         {
             lstNote.Add(new Note(noteMusic.time * 1000, noteMusic.line, IcecreamType.Full, (int)(noteMusic.length * 1000)));
         }
-        lstNote = SpawnNgonKemAndSort(lstNote);
+        //  lstNote = SpawnNgonKemAndSort(lstNote);
         LevelData P_levelData = new LevelData(lstNote);
         return P_levelData;
 
@@ -446,6 +469,17 @@ public class CreateLevelByHand : SingletonMonoBehaviour<CreateLevelByHand>
         clipLength = audioClip.length;
 
     }
+
+    public void TESTSONG()
+    {
+        stopwatch = new Stopwatch();
+
+        stopwatch.Start();
+        startTime = 0;
+        audioSource.time = 0;
+        audioSource.Play();
+
+    }
     public void ImportJson()
     {
 
@@ -453,6 +487,7 @@ public class CreateLevelByHand : SingletonMonoBehaviour<CreateLevelByHand>
 
 
         LevelData levelData = JsonConvert.DeserializeObject<LevelData>(dataAsJson);
+        levelData.lstNode = SpawnNgonKemAndSort(levelData.lstNode);
         LevelsDataSO.LevelDataArray[ImportToLevelDataElement] = levelData;
     }
     public void LoadFileOGG()
